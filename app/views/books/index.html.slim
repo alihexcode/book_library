@@ -1,0 +1,34 @@
+.w-full
+  .mx-auto.md:w-2/3.w-full.flex
+    .mx-auto
+      - if notice.present?
+        p#notice.py-2.px-3.bg-green-50.mb-5.text-green-500.font-medium.rounded-lg.inline-block
+          = notice
+  .flex.justify-between.items-center
+    h1.font-bold.text-4xl
+      | Books
+    = link_to 'New book', new_book_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium"
+  div
+    = render 'filter'
+  table.border-collapse.table-fixed.w-full.text-sm.my-5
+    thead
+      tr
+        th.border-b.dark:border-slate-600.font-medium.p-4.pl-8.pt-0.pb-3.text-left
+          | Title
+        th.border-b.dark:border-slate-600.font-medium.p-4.pt-0.pb-3.text-left
+          | Author
+        th.border-b.dark:border-slate-600.font-medium.p-4.pt-0.pb-3.text-left
+          | Year
+        th.border-b.dark:border-slate-600.font-medium.p-4.pt-0.pb-3.text-left
+          | Avg Rating (Total Rating)
+        th.border-b.dark:border-slate-600.font-medium.p-4.pt-0.pb-3.text-left
+          | Total Pages
+        th.border-b.dark:border-slate-600.font-medium.p-4.pt-0.pb-3.text-left
+          | Release Date
+        th.border-b.dark:border-slate-600.font-medium.p-4.pr-8.pt-0.pb-3.text-left
+          | Action
+    tbody.bg-white.dark:bg-slate-800
+      = render @books
+  .flex.justify-center.mb-5
+    - if @pagy.present?
+      == pagy_nav(@pagy)

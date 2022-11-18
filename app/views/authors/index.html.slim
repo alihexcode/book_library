@@ -1,0 +1,35 @@
+w-full
+  .mx-auto.md:w-2/3.w-full.flex
+    .mx-auto
+      - if notice.present?
+        p#notice.py-2.px-3.bg-green-50.mb-5.text-green-500.font-medium.rounded-lg.inline-block
+          = notice
+  .flex.justify-between.items-center
+    h1.font-bold.text-4xl
+      | Authors
+    = link_to 'New Author', new_author_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium"
+
+  table.border-collapse.table-fixed.w-full.text-sm.my-5
+    thead
+      tr
+        th.border-b.dark:border-slate-600.font-medium.p-4.pl-8.pt-0.pb-3.text-left
+          | Name
+        th.border-b.dark:border-slate-600.font-medium.p-4.pt-0.pb-3.text-left
+          | Bio
+        th.border-b.dark:border-slate-600.font-medium.p-4.pt-0.pb-3.text-left
+          | Gender
+        th.border-b.dark:border-slate-600.font-medium.p-4.pt-0.pb-3.text-left
+          | Total Books
+        th.border-b.dark:border-slate-600.font-medium.p-4.pt-0.pb-3.text-left
+          | Summary
+        th.border-b.dark:border-slate-600.font-medium.p-4.pt-0.pb-3.text-left
+          | Born
+        th.border-b.dark:border-slate-600.font-medium.p-4.pt-0.pb-3.text-left
+          | Died
+        th.border-b.dark:border-slate-600.font-medium.p-4.pr-8.pt-0.pb-3.text-left
+          | Action
+    tbody.bg-white.dark:bg-slate-800
+      = render @authors
+  .flex.justify-center.mb-5
+    - if @pagy.present?
+      == pagy_nav(@pagy, link_extra: 'data-turbo-action="advance"')

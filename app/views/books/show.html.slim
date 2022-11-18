@@ -1,0 +1,137 @@
+.mx-auto.md:w-2/3.w-full.flex
+  .mx-auto
+    - if notice.present?
+      p#notice.py-2.px-3.bg-green-50.mb-5.text-green-500.font-medium.rounded-lg.inline-block
+        = notice
+.md:grid.md:grid-cols-3.md:gap-6
+  .mt-5.md:col-span-3.md:mt-0
+    h3.font-bold.text-2xl.pb-3
+      | Book Detail
+    .shadow.sm:overflow-hidden.sm:rounded-md
+      .space-y-6.bg-white.px-4.py-5.sm:p-6
+        div
+          label.block.text-sm.font-medium.text-gray-700
+            | Title
+          p.mt-2.text-sm.text-gray-500
+            = @book.title
+        div
+          label.block.text-sm.font-medium.text-gray-700
+            | Cover
+          .mt-1.flex.items-center
+            span.inline-block.h-12.w-12.overflow-hidden.bg-gray-100
+              = image_tag @book.cover_url
+        div
+          label.block.text-sm.font-medium.text-gray-700
+            | Original Title
+          p.mt-2.text-sm.text-gray-500
+            = @book.original_title
+        div
+          label.block.text-sm.font-medium.text-gray-700
+            | Author
+          p.mt-2.text-sm.text-gray-500
+            ul.list-disc
+            - @book.authors.each do |author|
+              li
+                = link_to author_path(author)
+                  = author.name
+        div
+          label.block.text-sm.font-medium.text-gray-700
+            | Content Name
+          p.mt-2.text-sm.text-gray-500
+            = @book.content_name
+        div
+          label.block.text-sm.font-medium.text-gray-700
+            | Isbn
+          p.mt-2.text-sm.text-gray-500
+            = @book.isbn
+
+        div
+          label.block.text-sm.font-medium.text-gray-700
+            | Year
+          p.mt-2.text-sm.text-gray-500
+            = @book.year
+        div
+          label.block.text-sm.font-medium.text-gray-700
+            | Language Code
+          p.mt-2.text-sm.text-gray-500
+            = @book.language_code
+        div
+          label.block.text-sm.font-medium.text-gray-700
+            | Category
+          p.mt-2.text-sm.text-gray-500
+            = @book.category
+        div
+          label.block.text-sm.font-medium.text-gray-700
+            | Plot
+          p.mt-2.text-sm.text-gray-500
+            == @book.plot
+        div
+          label.block.text-sm.font-medium.text-gray-700
+            | Copyright
+          p.mt-2.text-sm.text-gray-500
+            = @book.copyright
+        div
+          label.block.text-sm.font-medium.text-gray-700
+            | Title
+          p.mt-2.text-sm.text-gray-500
+            = @book.title
+        div
+          label.block.text-sm.font-medium.text-gray-700
+            | Average Rating
+          p.mt-2.text-sm.text-gray-500
+            = @book.average_rating.to_f.round(1)
+        div
+          label.block.text-sm.font-medium.text-gray-700
+            | Rating Count
+          p.mt-2.text-sm.text-gray-500
+            = @book.rating_count
+        div
+          label.block.text-sm.font-medium.text-gray-700
+            | Description
+          p.mt-2.text-sm.text-gray-500
+            == @book.description
+        div
+          label.block.text-sm.font-medium.text-gray-700
+            | Loc Class
+          p.mt-2.text-sm.text-gray-500
+            = @book.loc_class
+        div
+          label.block.text-sm.font-medium.text-gray-700
+            | Language
+          p.mt-2.text-sm.text-gray-500
+            = @book.language
+        div
+          label.block.text-sm.font-medium.text-gray-700
+            | Pages
+          p.mt-2.text-sm.text-gray-500
+            = @book.pages
+        div
+          label.block.text-sm.font-medium.text-gray-700
+            | Isbn13
+          p.mt-2.text-sm.text-gray-500
+            = @book.isbn13
+        div
+          label.block.text-sm.font-medium.text-gray-700
+            | Release Date
+          p.mt-2.text-sm.text-gray-500
+            = @book.release_date
+        div
+          label.block.text-sm.font-medium.text-gray-700
+            | Summary
+          p.mt-2.text-sm.text-gray-500
+            == @book.summary
+        div
+          label.block.text-sm.font-medium.text-gray-700
+            | Content Cleaned
+          p.mt-2.text-sm.text-gray-500
+            = @book.content_cleaned
+        div
+          label.block.text-sm.font-medium.text-gray-700
+            | Content Available
+          p.mt-2.text-sm.text-gray-500
+            = @book.content_available
+      .bg-gray-50.px-4.py-3.text-right.sm:px-6
+        = link_to 'Edit this book', edit_book_path(@book), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium"
+        .inline-block.ml-2
+          = button_to 'Destroy this book', book_path(@book),form: { data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } }, method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium"
+        = link_to 'Back to books', books_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium"

@@ -1,0 +1,51 @@
+.mx-auto.md:w-2/3.w-full.flex
+  .mx-auto
+    - if notice.present?
+      p#notice.py-2.px-3.bg-green-50.mb-5.text-green-500.font-medium.rounded-lg.inline-block
+        = notice
+.md:grid.md:grid-cols-3.md:gap-6
+  .mt-5.md:col-span-3.md:mt-0
+    h3.font-bold.text-2xl.pb-3
+      | Author Detail
+    .shadow.sm:overflow-hidden.sm:rounded-md
+      .space-y-6.bg-white.px-4.py-5.sm:p-6
+         div
+          label.block.text-sm.font-medium.text-gray-700
+            | Name
+          p.mt-2.text-sm.text-gray-500
+            = @author.name
+         div
+          label.block.text-sm.font-medium.text-gray-700
+            | Bio
+          p.mt-2.text-sm.text-gray-500
+            == @author.bio
+         div
+          label.block.text-sm.font-medium.text-gray-700
+            | Gender
+          p.mt-2.text-sm.text-gray-500
+            = @author.gender
+         div
+          label.block.text-sm.font-medium.text-gray-700
+            | Total Books
+          p.mt-2.text-sm.text-gray-500
+            = @author.total_books.to_i
+         div
+          label.block.text-sm.font-medium.text-gray-700
+            | Summary
+          p.mt-2.text-sm.text-gray-500
+            == @author.summary
+         div
+          label.block.text-sm.font-medium.text-gray-700
+            | Born
+          p.mt-2.text-sm.text-gray-500
+            = @author.born
+         div
+          label.block.text-sm.font-medium.text-gray-700
+            | Died
+          p.mt-2.text-sm.text-gray-500
+            = @author.died
+         .bg-gray-50.px-4.py-3.text-right.sm:px-6
+            = link_to 'Edit this author', edit_author_path(@author), class: "mt-2 rounded-lg py-3 px-5 bg-blue-500 text-white inline-block font-medium"
+            .inline-block.ml-2
+              = button_to 'Destroy this author', author_path(@author), method: :delete,form: { data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } }, class: "mt-2 rounded-lg py-3 px-5 bg-red-500 text-white font-medium"
+            = link_to 'Back to authors', authors_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium"

@@ -1,0 +1,24 @@
+tr
+  td.border-b.border-slate-100.underline.dark:border-slate-700.p-4.pl-8.text-slate-800.dark:text-slate-400
+    = link_to author_path(author)
+      = author.name
+  td.border-b.border-slate-100.dark:border-slate-700.p-4.pl-8.text-slate-500.dark:text-slate-400
+    == author.shorten_bio
+  td.border-b.border-slate-100.dark:border-slate-700.p-4.pl-8.text-slate-500.dark:text-slate-400
+    = author.gender.humanize
+  td.border-b.border-slate-100.underline.dark:border-slate-700.p-4.pl-8.text-slate-800.dark:text-slate-400
+    = link_to books_path(author_ids: author.id)
+      = author.total_books.to_i
+  td.border-b.border-slate-100.dark:border-slate-700.p-4.pl-8.text-slate-500.dark:text-slate-400
+    == author.shorten_summary
+  td.border-b.border-slate-100.dark:border-slate-700.p-4.pl-8.text-slate-500.dark:text-slate-400
+    = author.formatted_born
+  td.border-b.border-slate-100.dark:border-slate-700.p-4.pl-8.text-slate-500.dark:text-slate-400
+    = author.formatted_died
+  td.border-b.border-slate-100.dark:border-slate-700.p-4.pl-8.text-slate-500.dark:text-slate-400
+    = link_to edit_author_path(author) do
+      svg.inline-block.w-4.h-4[fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"]
+        path[stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"]
+    = button_to author_path(author), method: :delete, form_class: "inline-block ml-4",form: { data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } }  do
+      svg.inline-block.w-4.h-4[fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"]
+        path[stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"]

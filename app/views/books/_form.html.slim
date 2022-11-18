@@ -1,0 +1,82 @@
+= form_with(model: book, class: "contents") do |form|
+  - if book.errors.any?
+    #error_explanation.bg-red-50.text-red-500.px-3.py-2.font-medium.rounded-lg.mt-3
+      h2
+        = pluralize(book.errors.count, "error")
+        |  prohibited this book from being saved:
+      ul
+        - book.errors.each do |error|
+          li
+            = error.full_message
+  .my-5
+    = form.label :authors
+    = form.collection_select :author_ids, @authors, :id, :name,
+                              {},
+                              class: 'w-full',
+                              data: { controller: 'tom-select'},
+                              multiple: true
+  .my-5
+    = form.label :content_name
+    = form.text_field :content_name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"
+  .my-5
+    = form.label :isbn
+    = form.text_field :isbn, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"
+  .my-5
+    = form.label :original_title
+    = form.text_field :original_title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"
+  .my-5
+    = form.label :year
+    = form.text_field :year, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"
+  .my-5
+    = form.label :language_code
+    = form.text_field :language_code, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"
+  .my-5
+    = form.label :category
+    = form.text_field :category, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"
+  .my-5
+    = form.label :plot
+    = form.rich_text_area :plot, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"
+  .my-5
+    = form.label :copyright
+    = form.text_field :copyright, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"
+  .my-5
+    = form.label :title
+    = form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"
+  .my-5
+    = form.label :average_rating
+    = form.text_field :average_rating, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"
+  .my-5
+    = form.label :rating_count
+    = form.number_field :rating_count, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"
+  .my-5
+    = form.label :description
+    = form.rich_text_area :description, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"
+  .my-5
+    = form.label :loc_class
+    = form.text_field :loc_class, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"
+  .my-5
+    = form.label :language
+    = form.text_field :language, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"
+  .my-5
+    = form.label :pages
+    = form.number_field :pages, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"
+  .my-5
+    = form.label :isbn13
+    = form.text_field :isbn13, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"
+  .my-5
+    = form.label :release_date
+    = form.date_field :release_date, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"
+  .my-5
+    = form.label :cover
+    = form.file_field :cover, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"
+  .my-5
+    = form.label :summary
+    = form.rich_text_area :summary, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"
+  .my-5
+    = form.label :content_cleaned
+    = form.check_box :content_cleaned, class: "block mt-2 h-5 w-5"
+  .my-5
+    = form.label :content_available
+    = form.check_box :content_available, class: "block mt-2 h-5 w-5"
+  .inline
+    = form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer"
