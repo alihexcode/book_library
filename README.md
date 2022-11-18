@@ -9,7 +9,7 @@ The setups steps expect following tools installed on the system.
 ##### 1. Check out the repository
 
 ```bash
-git clone git@github.com:asadt93/book_library.git
+git clone git@github.com:alitwiscode/book_library.git
 ```
 
 ##### 2. Create database.yml file
